@@ -1,0 +1,3 @@
+21:02:24 - "scalac" is not found on the PATH.  Scala files will not be recompiled
+21:02:25 - !! mcinjector check FAILED !!
+21:02:25 - Command '"java" -jar runtime/bin/mcinjector.jar --version' returned non-zero exit status 1

@@ -1,0 +1,17 @@
+21:02:24 - == MCP 9.04 (data: 9.08, client: 1.7.10, server: 1.7.10) ==
+21:02:24 - OS : darwin
+21:02:24 - "scalac" is not found on the PATH.  Scala files will not be recompiled
+21:02:24 - # VERSION INFO
+21:02:24 - python: 3.8.3 (v3.8.3:6f8c8320e9, May 13 2020, 16:29:34) 
+[Clang 6.0 (clang-600.0.57)]
+21:02:25 - platform: macOS-10.16-x86_64-i386-64bit
+21:02:25 - # java: '"java" -version'
+21:02:25 - b'openjdk version "18" 2022-03-22\nOpenJDK Runtime Environment (build 18+36-2087)\nOpenJDK 64-Bit Server VM (build 18+36-2087, mixed mode, sharing)'
+21:02:25 - # javac: '"javac" -version'
+21:02:25 - b'javac 18'
+21:02:25 - # javac runtime: '"javac" -J-version'
+21:02:25 - b'openjdk version "18" 2022-03-22\nOpenJDK Runtime Environment (build 18+36-2087)\nOpenJDK 64-Bit Server VM (build 18+36-2087, mixed mode, sharing)'
+21:02:25 - # mcinjector: 'runtime/bin/mcinjector.jar --version'
+21:02:25 - b'Error: Unable to access jarfile runtime/bin/mcinjector.jar'
+21:02:25 - !! mcinjector check FAILED !!
+21:02:25 - Command '"java" -jar runtime/bin/mcinjector.jar --version' returned non-zero exit status 1
