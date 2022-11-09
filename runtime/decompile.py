@@ -126,7 +126,7 @@ def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_refo
             commands.creatergcfg(reobf=False, keep_lvt=keep_lvt, keep_generics=keep_generics, rg_update=rg_update)
 
         if not nocopy:
-            clientCopy.copyClientAssets(commands, workdir)
+            clientCopy.copy_client_assets(commands, workdir)
 
         try:
             if process_client:

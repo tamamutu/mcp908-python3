@@ -387,7 +387,7 @@ class Commands(object):
         self.cmdrgreobf = self.config.get('COMMANDS', 'CmdRGReobf', raw=1) % self.cmdjava
         self.cmdss = self.config.get('COMMANDS', 'CmdSS', raw=1) % (self.cmdjava, self.specialsource)
         self.cmdssreobf = self.config.get('COMMANDS', 'CmdSSReobf', raw=1) % (
-        self.cmdjava, self.specialsource, ','.join(self.ignorepkg))
+            self.cmdjava, self.specialsource, ','.join(self.ignorepkg))
         self.cmdjadretro = self.config.get('COMMANDS', 'CmdJadretro', raw=1) % (self.cmdjava, self.jadretro)
         self.cmdfernflower = self.config.get('COMMANDS', 'CmdFernflower', raw=1) % (self.cmdjava, self.fernflower)
         self.cmdexceptor = self.config.get('COMMANDS', 'CmdExceptor', raw=1) % (self.cmdjava, self.exceptor)
@@ -438,7 +438,7 @@ class Commands(object):
         config = configparser.SafeConfigParser()
         try:
             with open(os.path.normpath(self._default_config)) as fh:
-                config.readfp(fh)
+                config.read_file(fh)
             if self.conffile is not None:
                 config.read(os.path.normpath(self.conffile))
         except IOError:
@@ -1335,7 +1335,8 @@ class Commands(object):
         reallyrmtree(pathsrclk[side])
         os.makedirs(pathsrclk[side])
 
-        # HINT: We pass in the exec output jar, this skips the need to extract the jar, and copy classes to there own folder
+        # HINT: We pass in the exec output jar,
+        # this skips the need to extract the jar, and copy classes to there own folder
         forkcmd = self.cmdfernflower.format(indir=ffinput[side], outdir=pathsrclk[side])
         self.runcmd(forkcmd)
 
@@ -1575,7 +1576,7 @@ class Commands(object):
                             self.logger.error(' === Your scala version is out of date, update to at least 2.10.0 ===')
                         if line[0] != '[' and line[0:4] != 'Note':
                             self.logger.error(line)
-                            if '^' in line:
+                            if '^' in str(line):
                                 self.logger.error('')
                 self.logger.error('================================')
                 self.logger.error('')
@@ -1594,7 +1595,7 @@ class Commands(object):
                 if line.strip():
                     if line[0] != '[' and line[0:4] != 'Note':
                         self.logger.error(line)
-                        if '^' in line:
+                        if '^' in str(line):
                             self.logger.error('')
             self.logger.error('==================')
             self.logger.error('')
@@ -1626,7 +1627,7 @@ class Commands(object):
         process = subprocess.Popen(forklist, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, bufsize=-1)
         output, _ = process.communicate()
         if log_file is not None:
-            with open(log_file, 'w') as log:
+            with open(log_file, 'wb') as log:
                 log.write(output)
         if not quiet:
             for line in output.splitlines():
@@ -1735,20 +1736,20 @@ class Commands(object):
 
         # HINT: We read the relevant CSVs
         names = {'methods': {}, 'fields': {}, 'params': {}}
-        with open(self.csvmethods, 'rb') as fh:
+        with open(self.csvmethods, 'rt') as fh:
             methodsreader = csv.DictReader(fh)
             for row in methodsreader:
                 if int(row['side']) == side or int(row['side']) == 2:
                     if row['name'] != row['searge']:
                         names['methods'][row['searge']] = row['name']
-        with open(self.csvfields, 'rb') as fh:
+        with open(self.csvfields, 'rt') as fh:
             fieldsreader = csv.DictReader(fh)
             for row in fieldsreader:
                 if int(row['side']) == side or int(row['side']) == 2:
                     if row['name'] != row['searge']:
                         names['fields'][row['searge']] = row['name']
         if self.has_param_csv:
-            with open(self.csvparams, 'rb') as fh:
+            with open(self.csvparams, 'rt') as fh:
                 paramsreader = csv.DictReader(fh)
                 for row in paramsreader:
                     if int(row['side']) == side or int(row['side']) == 2:

@@ -34,8 +34,8 @@ def cleanup(conffile, force, distclean):
             print('The cleanup script will delete all folders created by MCP, including the')
             print('src folder which may contain changes you made to the code, along with any')
             print('saved worlds from the client or server.')
-            answer = input('If you really want to clean up, enter "Yes" ')
-            if answer.lower() not in ['yes']:
+            answer = input('If you really want to clean up, enter [yes/y]: ')
+            if answer.lower() not in ['yes', 'y']:
                 print('You have not entered "Yes", aborting the clean up process')
                 sys.exit(1)
 

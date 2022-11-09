@@ -39,7 +39,7 @@ def writesrgsfromcsvs(csvclass, csvmethods, csvfields, outsrgs, side, ignore_cla
         raise Exception("Side not recognized : %d" % side)
 
     # HINT: We append the class elements. We also handle the special case of Minecraft, MinecraftApplet, MinecraftServer
-    with open(csvclass, 'rb') as fh:
+    with open(csvclass, 'rt') as fh:
         csvreader = csv.DictReader(fh)
         for row in csvreader:
             if int(row['side']) == side:
@@ -74,7 +74,7 @@ def writesrgsfromcsvs(csvclass, csvmethods, csvfields, outsrgs, side, ignore_cla
                                 '%s/%s/%s %s' % (row['package'], row['classname'], row['searge'], row['sig'])])
 
     # HINT: We append the field elements
-    with open(csvfields, 'rb') as fh:
+    with open(csvfields, 'rt') as fh:
         csvreader = csv.DictReader(fh)
         for row in csvreader:
             if int(row['side']) == side:
